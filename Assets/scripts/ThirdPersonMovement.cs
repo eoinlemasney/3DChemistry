@@ -13,6 +13,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     // get payer to move towards camera
     public Transform cam;
+    public Interactable focus;
+    public PlayerMotor motor;
+
+// filters out objects that we dont want to interact with
+    public LayerMask movementMask;
+
+
 
 
 
@@ -23,7 +30,8 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f) {
+        if (direction.magnitude >= 0.1f)
+        {
 
             //rotate player to where it is moving using Atan2 function
             // convert fro radians to degrees
@@ -35,5 +43,55 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targerAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+
+        //press left mouse
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, movementMask))
+            {
+
+                RemoveFocus();
+            }
+        }
+
+
+        //Prese right mouse
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Right key pressed");
+            Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, movementMask))
+            {
+                Debug.Log("ray cast hit");
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Debug.Log(interactable);
+                // If we hit it set it as the focus
+                if (interactable != null)
+                {
+                    Debug.Log(interactable);
+                    SetFocus(interactable);
+                }
+            }
+        }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        focus = newFocus;
+        motor.FollowTarget(newFocus);
+
+    }
+
+
+        void RemoveFocus()
+    {
+        focus = null;
+        motor.StopFollowingTarget();
+
     }
 }
