@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
 
 
-fiinshed branckey episode 2 at 12:22
+// fiinshed branckey episode 2 at 12:22
 
     void Update() {
         if (isFocus  && !hasInteracted )
