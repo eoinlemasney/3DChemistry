@@ -1,17 +1,23 @@
 ﻿
 using UnityEngine;
 
-public class ItemPickUp : MonoBehaviour
+public class ItemPickUp : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public Item item;
+    //overide the function in the parent class
+    public override void Interact()
     {
-        
+        base.Interact();
+
+        PickUp();
+    }
+    void PickUp()
+    {
+        Debug.Log("Pick up item " + item.name);
+        //create a reference to the inventory.. use the Singleton created
+        bool wasPickedUp = Inventory.instance.Add(item);
+        if (wasPickedUp)
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
