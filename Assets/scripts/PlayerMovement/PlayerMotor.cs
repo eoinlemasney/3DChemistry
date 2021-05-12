@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,9 @@ public class PlayerMotor : MonoBehaviour {
 
     void Update()
     {
+        //This checks to see if we are hovering over the ui. If so, dont move
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         if (target != null) {
             agent.SetDestination(target.position);
             FaceTarget();
