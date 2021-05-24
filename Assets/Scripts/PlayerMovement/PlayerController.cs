@@ -16,13 +16,15 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask interactionMask;	// Everything we can interact with
 
 	PlayerMotor motor;		// Reference to our motor
-	Camera cam;				// Reference to our camera
+	public static  Camera cam;			// Reference to our camera
+	public static  Camera enabledCamera;
 
 	// Get references
 	void Start ()
 	{
 		motor = GetComponent<PlayerMotor>();
 		cam = Camera.main;
+		enabledCamera = cam;
 	}
 
 	// Update is called once per frame
@@ -35,8 +37,9 @@ public class PlayerController : MonoBehaviour {
 		// If we press left mouse
 		if (Input.GetMouseButtonDown(0))
 		{
+			Debug.Log(enabledCamera);
 			// Shoot out a ray
-			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			Ray ray = enabledCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
 			// If we hit
@@ -53,8 +56,9 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("Right key pressed");
-            Ray ray =  cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray =  enabledCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+			Debug.Log("enabledCamera this oen ", enabledCamera);
 
             if (Physics.Raycast(ray, out hit, 100))
             {
