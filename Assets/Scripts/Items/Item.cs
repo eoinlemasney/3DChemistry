@@ -9,6 +9,8 @@ public class Item : ScriptableObject
     public Sprite icon = null;
     public bool isDefaultItem = false;
 
+    public string additionalInfo = "";
+
     public virtual void Use ()
     {
         // function can be overridden depending on what the item is
@@ -19,6 +21,12 @@ public class Item : ScriptableObject
 
     public void RemoveFromInventory() {
         Inventory.instance.Remove(this);
+    }
+
+
+    public string CallDescription() {
+        return "You need the " + name + ". " + additionalInfo;
+        
     }
 
 }

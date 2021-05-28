@@ -4,10 +4,10 @@ public class FootSteps : MonoBehaviour
 {
     [SerializeField]
     private AudioClip[] stoneClips;
-    [SerializeField]
-    private AudioClip[] mudClips;
-    [SerializeField]
-    private AudioClip[] grassClips;
+    // [SerializeField]
+    // private AudioClip[] mudClips;
+    // [SerializeField]
+    // private AudioClip[] grassClips;
 
     private AudioSource audioSource;
 

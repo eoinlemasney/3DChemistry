@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
     public Transform interactionTransform;
 
+
     public virtual void Interact()
     {
         Debug.Log("Interacting with " + transform.name);
@@ -21,6 +22,8 @@ public class Interactable : MonoBehaviour
     void Update() {
         if (isFocus  && !hasInteracted )
         {
+            Debug.Log("enter");
+
             float distance = Vector3.Distance(player.position, transform.position);
             Debug.Log(distance);
             if (distance <= radius) {
