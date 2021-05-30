@@ -61,19 +61,15 @@ public class ThirdPersonMovement : MonoBehaviour
         //Prese right mouse
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Right key pressed");
             Ray ray =  Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100, movementMask))
             {
-                Debug.Log("ray cast hit");
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                Debug.Log(interactable);
                 // If we hit it set it as the focus
                 if (interactable != null)
                 {
-                    Debug.Log(interactable);
                     SetFocus(interactable);
                 }
             }

@@ -13,7 +13,6 @@ public class ItemPickUp : Interactable
     }
     void PickUp()
     {
-        Debug.Log("Pick up item " + item.name);
         //create a reference to the inventory.. use the Singleton created
         bool wasPickedUp = Inventory.instance.Add(item);
         if (wasPickedUp)

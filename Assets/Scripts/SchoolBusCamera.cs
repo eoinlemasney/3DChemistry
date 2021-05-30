@@ -13,10 +13,8 @@ public class SchoolBusCamera : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if (other.tag == "Player")
         {
-            Debug.Log("Player");
 
             busCam.enabled = true;
             mainCam.enabled = false;
@@ -27,7 +25,6 @@ public class SchoolBusCamera : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         {
-            Debug.Log("OnTriggerExit");
             mainCam.enabled = true;
             busCam.enabled = false;
             PlayerController.enabledCamera = mainCam;

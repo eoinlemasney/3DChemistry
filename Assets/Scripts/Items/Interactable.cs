@@ -10,17 +10,18 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
     public Transform interactionTransform;
 
+
     public virtual void Interact()
     {
         Debug.Log("Interacting with " + transform.name);
     }
 
 
-// fiinshed branckey episode 2 at 12:22
 
     void Update() {
         if (isFocus  && !hasInteracted )
         {
+
             float distance = Vector3.Distance(player.position, transform.position);
             Debug.Log(distance);
             if (distance <= radius) {

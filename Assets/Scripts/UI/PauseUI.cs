@@ -29,7 +29,6 @@ public class PauseUI : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("PAUSING");
         pauseMenuUI.SetActive(true);
         //Freezes the game
         Time.timeScale = 0f;
@@ -56,7 +55,6 @@ public class PauseUI : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("QUIT");
         Application.Quit();
 
     }
