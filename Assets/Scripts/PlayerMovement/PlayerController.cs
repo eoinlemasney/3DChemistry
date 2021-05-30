@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (ChemistryExperiment.hasItems)
+                return;
 
 
             // Shoot out a ray
@@ -68,19 +70,15 @@ public class PlayerController : MonoBehaviour
         // If we press right mouse
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Right key pressed");
             Ray ray = enabledCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Debug.Log("enabledCamera this oen ", enabledCamera);
 
             if (Physics.Raycast(ray, out hit, 100))
             {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
-                Debug.Log("interactable");
                 // If we hit it set it as the focus
                 if (interactable != null)
                 {
-                    Debug.Log("interactable hit");
                     SetFocus(interactable);
                 }
             }

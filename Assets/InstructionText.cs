@@ -14,6 +14,12 @@ public class InstructionText : MonoBehaviour
     void Start() {
         instructionalText = gameObject.GetComponent<Text>();
     }
+
+        // Invoked when the value of the text field changes.
+    public void ValueChangeCheck()
+    {
+        StartCoroutine(FadeTextToFullAlpha(1f,instructionalText));
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))

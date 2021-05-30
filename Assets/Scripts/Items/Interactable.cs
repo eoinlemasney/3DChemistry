@@ -17,12 +17,10 @@ public class Interactable : MonoBehaviour
     }
 
 
-// fiinshed branckey episode 2 at 12:22
 
     void Update() {
         if (isFocus  && !hasInteracted )
         {
-            Debug.Log("enter");
 
             float distance = Vector3.Distance(player.position, transform.position);
             Debug.Log(distance);

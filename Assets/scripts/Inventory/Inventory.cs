@@ -16,11 +16,13 @@ public class Inventory : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
     public int space = 9;
     public static Inventory instance;
+
+    public List<Item> itemsRequired = new List<Item>();
+
     void Awake()
     {
         if (instance != null)
         {
-            Debug.Log("More than one instance of inventory found");
             return;
         }
         instance = this;
@@ -28,6 +30,8 @@ public class Inventory : MonoBehaviour
 
     #endregion
     public List<Item> items = new List<Item>();
+    public List<Item> itemsUsed = new List<Item>();
+
 
     public bool Add(Item item)
     {
@@ -54,6 +58,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
+        //Remove item from the inventory but store it as a used item
         items.Remove(item);
 
         if (onItemChangedCallback != null)
