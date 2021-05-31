@@ -2,7 +2,7 @@
 
 ***
 This is a college project that is intended to show how games can be used to educate students.
-This game is focused on the Junior Cert Cheistry Curriculum. The User will naviagte through the game, following tasks the required items.
+This game is focused on the Junior Cert Cheistry Curriculum. The User will navigate through the game, following tasks the required items.
 Once the items are collected, the user will have to read the instuctions and use the items in the correct order. If the items are used in the correct order,
 the experiment will be a success and the the user will hear a 'pop' as a result of the chemical reaction'
 
